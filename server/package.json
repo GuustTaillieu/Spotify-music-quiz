@@ -1,0 +1,58 @@
+{
+  "name": "trpc-api-boilerplate",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./trpc-api-export/dist/index.js",
+  "exports": "./trpc-api-export/dist/index.js",
+  "types": "./trpc-api-export/dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "trpc-api-export/dist",
+    "README.md"
+  ],
+  "scripts": {
+    "trpc-api-export": "tsup --config trpc-api-export/builder/tsup.config.ts && npm run format-fix",
+    "prepare": "husky",
+    "build": "rm -rf build && tsc -p tsconfig.json",
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "lint": "eslint --report-unused-disable-directives --max-warnings 0 .",
+    "lint-fix": "eslint --fix .",
+    "lint-staged-husky": "lint-staged",
+    "tsc": "tsc -p tsconfig.json",
+    "format-lint": "prettier --config .prettierrc --check --ignore-unknown .",
+    "format-fix": "prettier --config .prettierrc --write --ignore-unknown -l .",
+    "release": "semantic-release --branches main"
+  },
+  "dependencies": {
+    "@trpc/server": "11.4.3",
+    "cors": "2.8.5",
+    "express": "5.1.0",
+    "superjson": "2.2.2",
+    "zod": "3.25.67"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "19.8.1",
+    "@commitlint/config-conventional": "19.8.1",
+    "@eslint/js": "9.30.1",
+    "@types/cors": "2.8.19",
+    "@types/eslint": "9.6.1",
+    "@types/express": "5.0.3",
+    "eslint": "9.30.1",
+    "eslint-config-prettier": "10.1.5",
+    "eslint-import-resolver-typescript": "4.4.4",
+    "eslint-plugin-import-x": "4.16.1",
+    "eslint-plugin-prettier": "5.5.1",
+    "husky": "9.1.7",
+    "lint-staged": "16.1.2",
+    "prettier": "3.6.2",
+    "semantic-release": "24.2.6",
+    "tsup": "8.5.0",
+    "tsx": "4.20.3",
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.35.1"
+  },
+  "engines": {
+    "node": ">=24.3.0"
+  }
+}
